@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/github_account_category_title" >
+        <EditTextPreference
+            android:key="github_username"
+            android:title="@string/github_username_preference_title"
+            android:summary="@string/github_username_preference_summary"/>
+        <EditTextPreference
+            android:key="github_password"
+            android:title="@string/github_password_preference_title"
+            android:password="true"
+            android:summary="@string/github_password_preference_summary"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/search_category_title" >
+        <EditTextPreference
+            android:key="search_pagination"
+            android:title="@string/pagination_preference_title"
+            android:inputType="number"
+            android:summary="@string/pagination_preference_summary"
+            android:defaultValue="@string/pagination_preference_default_value"/>
+        <EditTextPreference
+            android:key="url_base"
+            android:title="@string/url_base_preference_title"
+            android:defaultValue="@string/url_base_preference_default_value"
+            android:summary="@string/url_base_preference_summary"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
