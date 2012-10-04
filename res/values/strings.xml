@@ -6,7 +6,7 @@
     <string name="about_menu_title">About</string>
     <string name="job_description_hint">Job description</string>
     <string name="search_button_label">Search</string>
-    
+
     <!-- GithubJobsPreferenceActivity -->
     <string name="search_category_title">Search</string>
     <string name="github_account_category_title">Github Account</string>
@@ -20,8 +20,13 @@
     <string name="url_base_preference_title">Url base</string>
     <string name="url_base_preference_summary">Url base to execute queries to Github Jobs</string>
     <string name="url_base_preference_default_value">http://jobs.github.com/positions</string>
-    
+
     <!-- JobsListActivity -->
     <string name="load_jobs_dialog_label">Searching jobs</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- JobDetailActivity -->
+    <string name="title_activity_job_detail">JobDetail</string>
+    <string name="load_job_dialog_label">Retrieving job data</string>
 
 </resources>

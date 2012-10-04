@@ -49,7 +49,7 @@ public class HttpHelper {
         return sb.toString();
     }
 
-    public Job getJob(int id) throws ClientProtocolException, IOException {
+    public Job getJob(String id) throws ClientProtocolException, IOException {
         // Look for URL in preferences
         SharedPreferences pref = PreferenceManager
                 .getDefaultSharedPreferences(context);

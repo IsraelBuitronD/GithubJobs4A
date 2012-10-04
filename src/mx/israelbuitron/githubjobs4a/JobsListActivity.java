@@ -19,6 +19,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class JobsListActivity extends Activity {
 
         // Load controls
         jobsListView = (ListView) findViewById(R.id.jobsList);
+        jobsListView.setOnItemClickListener(new JobsListViewListener(this));
 
         // Call task
         LoadJobsList task = new LoadJobsList(this);
@@ -61,6 +64,29 @@ public class JobsListActivity extends Activity {
 
     public static class ViewHolder {
         public TextView jobTitle;
+    }
+
+    public class JobsListViewListener implements OnItemClickListener {
+        private final Context context;
+
+        public JobsListViewListener(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent,
+                                View view,
+                                int position,
+                                long id) {
+            // Get selected job
+            Job job = jobsLoaded[position];
+
+            // Send parameters to activity
+            Intent intent = new Intent(context, JobDetail.class);
+            intent.putExtra("job_id", job.getId());
+
+            startActivity(intent);
+        }
     }
 
     protected class JobArrayAdapter extends ArrayAdapter<Job> {
