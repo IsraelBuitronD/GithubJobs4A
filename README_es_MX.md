@@ -15,9 +15,7 @@ GithubJobs4A está publicado en un repositorio Git, así que puedes descargarlo 
 Lista de pendientes
 ===================
 
-Por ahora no hay pendientes o una lista de peticiones.
-Sin embargo, puedes realizar contribuciones para mejorar la aplicación.
-
+Por favor revisa el archivo `TODO_es_MX.md`.
 
 Retroalimentación
 =================

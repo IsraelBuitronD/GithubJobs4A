@@ -16,8 +16,7 @@ with this url:
 ToDo List and Pendings
 ======================
 
-Now there is no a pending features or wishlist.
-But you can make contributions to improve this application.
+Please check all pendings in `TODO.md` file.
 
 
 Feedback
