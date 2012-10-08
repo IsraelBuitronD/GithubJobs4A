@@ -7,7 +7,6 @@ import mx.israelbuitron.githubjobs4a.pojos.Job;
 
 import org.apache.http.client.ClientProtocolException;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +14,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,11 +22,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class JobsListActivity extends Activity {
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockDialogFragment;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 
-    private Job[] jobsLoaded;
-    private ArrayAdapter<Job> adapter;
-    private ListView jobsListView;
+public class JobsListActivity extends SherlockFragmentActivity implements OnItemClickListener {
+
+    private Job[] mJobsLoaded;
+    private ArrayAdapter<Job> mAdapter;
+    private ActionBar mActionBar;
+    private ListView mJobsListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +41,10 @@ public class JobsListActivity extends Activity {
         setContentView(R.layout.activity_jobs_list);
 
         // Load controls
-        jobsListView = (ListView) findViewById(R.id.jobsList);
-        jobsListView.setOnItemClickListener(new JobsListViewListener(this));
+        mActionBar = getSupportActionBar();
+        mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        mJobsListView = (ListView) findViewById(R.id.jobsList);
+        mJobsListView.setOnItemClickListener(this);
 
         // Call task
         LoadJobsList task = new LoadJobsList(this);
@@ -47,18 +53,24 @@ public class JobsListActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_jobs_list, menu);
+        getSupportMenuInflater().inflate(R.menu.activity_jobs_list, menu);
         return true;
     }
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        switch (item.getItemId()) {
+        switch(item.getItemId()) {
         case R.id.settings_menu:
             Intent i = new Intent(this, GithubJobsPreferenceActivity.class);
             startActivity(i);
             break;
+        case R.id.about_menu:
+            SherlockDialogFragment aboutDialog = new AboutDialog();
+            String tag = getString(R.string.about_dialog_fragment_tag);
+            aboutDialog.show(getSupportFragmentManager(), tag);
+            break;
         }
+
         return super.onMenuItemSelected(featureId, item);
     }
 
@@ -171,9 +183,9 @@ public class JobsListActivity extends Activity {
             super.onPostExecute(result);
 
             // Update jobs list
-            jobsLoaded = result;
-            adapter = new JobArrayAdapter(context, R.id.jobsList, jobsLoaded);
-            jobsListView.setAdapter(adapter);
+            mJobsLoaded = result;
+            mAdapter = new JobArrayAdapter(context, R.id.jobsList, mJobsLoaded);
+            mJobsListView.setAdapter(mAdapter);
 
             // Hide dialog
             dialog.dismiss();

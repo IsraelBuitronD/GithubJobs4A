@@ -29,4 +29,10 @@
     <string name="title_activity_job_detail">JobDetail</string>
     <string name="load_job_dialog_label">Retrieving job data</string>
 
+    <!-- About dialog -->
+    <string name="about_dialog_fragment_tag">about_dialog</string>
+    <string name="about_dialog_title">About GithubJobs4A</string>
+    <string name="about_dialog_text">About GithubJobs4A</string>
+    <string name="about_dialog_accept_button_label">Ok</string>
+
 </resources>
