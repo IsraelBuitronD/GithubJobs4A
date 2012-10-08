@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".JobsListActivity"
-            android:label="@string/title_activity_jobs_list" >
+            android:label="@string/title_activity_jobs_list"
+            android:theme="@style/Theme.Sherlock.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +25,8 @@
         <activity android:name=".GithubJobsPreferenceActivity" />
         <activity
             android:name=".JobDetail"
-            android:label="@string/title_activity_job_detail" />
+            android:label="@string/title_activity_job_detail"
+            android:theme="@style/Theme.Sherlock.Light" />
     </application>
 
 </manifest>
