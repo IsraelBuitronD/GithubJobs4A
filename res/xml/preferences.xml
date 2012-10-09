@@ -13,19 +13,6 @@
             android:summary="@string/github_password_preference_summary"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/search_category_title" >
-        <CheckBoxPreference
-            android:key="pagination"
-            android:title="@string/pagination_preference_title"
-            android:summaryOff="@string/pagination_preference_off_summary"
-            android:summaryOn="@string/pagination_preference_on_summary"
-            android:defaultValue="true" />
-        <EditTextPreference
-            android:key="pagination_size"
-            android:title="@string/pagination_size_preference_title"
-            android:inputType="number"
-            android:summary="@string/pagination_size_preference_summary"
-            android:defaultValue="@string/pagination_size_preference_default_value"
-            android:dependency="pagination"/>
         <EditTextPreference
             android:key="url_base"
             android:title="@string/url_base_preference_title"
