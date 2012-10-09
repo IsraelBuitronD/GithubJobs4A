@@ -26,6 +26,7 @@
     <string name="about_menu_title">About</string>
     <string name="settings_menu_title">Settings</string>
     <string name="no_server_response_message">No server response, please retry later</string>
+    <string name="space_hyphen_space_separator_label">\u00A0-\u00A0</string>
 
     <!-- JobDetailActivity -->
     <string name="title_activity_job_detail">JobDetail</string>
