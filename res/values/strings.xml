@@ -37,5 +37,6 @@
     <string name="about_dialog_title">About GithubJobs4A</string>
     <string name="about_dialog_text">About GithubJobs4A</string>
     <string name="about_dialog_accept_button_label">Ok</string>
+    <string name="search_view_hint_label">Search for jobs</string>
 
 </resources>

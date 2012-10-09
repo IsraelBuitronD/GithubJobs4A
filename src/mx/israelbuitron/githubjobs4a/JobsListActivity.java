@@ -30,6 +30,7 @@ import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.widget.SearchView;
 
 public class JobsListActivity extends SherlockFragmentActivity implements OnItemClickListener {
 
@@ -57,6 +58,13 @@ public class JobsListActivity extends SherlockFragmentActivity implements OnItem
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getSupportMenuInflater().inflate(R.menu.activity_jobs_list, menu);
+
+        // Search button
+        SearchView searchView = new SearchView(mActionBar.getThemedContext());
+        searchView.setQueryHint(getString(R.string.search_view_hint_label));
+        MenuItem searchMenu = menu.findItem(R.id.search_menu);
+        searchMenu.setActionView(searchView);
+
         return true;
     }
 
