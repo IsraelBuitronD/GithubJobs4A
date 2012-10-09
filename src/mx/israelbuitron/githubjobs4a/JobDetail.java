@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 public class JobDetail extends Activity {
@@ -21,8 +22,8 @@ public class JobDetail extends Activity {
     private TextView jobTitleTxt;
     private TextView jobLocationTxt;
     private TextView jobTypeTxt;
-    private TextView jobDescriptionTxt;
-    private TextView jobHowToApplyTxt;
+    private WebView jobDescriptionWeb;
+    private WebView jobHowToApplyWeb;
     private TextView jobCompanyTxt;
     private TextView jobCompanyUrlTxt;
     private TextView jobCompanyLogoTxt;
@@ -39,8 +40,8 @@ public class JobDetail extends Activity {
         jobTitleTxt = (TextView) findViewById(R.id.job_title_txt);
         jobLocationTxt = (TextView) findViewById(R.id.job_location_txt);
         jobTypeTxt = (TextView) findViewById(R.id.job_type_txt);
-        jobDescriptionTxt = (TextView) findViewById(R.id.job_description_txt);
-        jobHowToApplyTxt = (TextView) findViewById(R.id.job_how_to_apply_txt);
+        jobDescriptionWeb = (WebView) findViewById(R.id.job_description_web);
+        jobHowToApplyWeb = (WebView) findViewById(R.id.job_how_to_apply_web);
         jobCompanyTxt = (TextView) findViewById(R.id.job_company_txt);
         jobCompanyUrlTxt = (TextView) findViewById(R.id.job_company_url_txt);
         jobCompanyLogoTxt = (TextView) findViewById(R.id.job_company_logo_txt);
@@ -70,8 +71,8 @@ public class JobDetail extends Activity {
         jobTitleTxt.setText(job.getTitle());
         jobLocationTxt.setText(job.getLocation());
         jobTypeTxt.setText(job.getType());
-        jobDescriptionTxt.setText(job.getDescription());
-        jobHowToApplyTxt.setText(job.getHow_to_apply());
+        jobDescriptionWeb.loadData(job.getDescription(), "text/html", null);
+        jobHowToApplyWeb.loadData(job.getHow_to_apply(), "text/html", null);
         jobCompanyTxt.setText(job.getCompany());
         jobCompanyLogoTxt.setText(job.getCompany_logo());
         jobCompanyUrlTxt.setText(job.getCompany_url());

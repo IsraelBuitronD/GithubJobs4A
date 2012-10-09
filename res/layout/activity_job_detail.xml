@@ -24,13 +24,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/job_description_txt"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+        <WebView
+            android:id="@+id/job_description_web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/job_how_to_apply_txt"
+        <WebView
+            android:id="@+id/job_how_to_apply_web"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
