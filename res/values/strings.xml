@@ -1,9 +1,7 @@
 <resources>
 
     <string name="app_name">GithubJobs</string>
-    <string name="settings_menu_title">Settings</string>
     <string name="title_activity_jobs_list">Github Jobs</string>
-    <string name="about_menu_title">About</string>
     <string name="job_description_hint">Job description</string>
     <string name="search_button_label">Search</string>
 
@@ -24,6 +22,9 @@
     <!-- JobsListActivity -->
     <string name="load_jobs_dialog_label">Searching jobs</string>
     <string name="menu_settings">Settings</string>
+    <string name="search_menu_title">Search</string>
+    <string name="about_menu_title">About</string>
+    <string name="settings_menu_title">Settings</string>
 
     <!-- JobDetailActivity -->
     <string name="title_activity_job_detail">JobDetail</string>

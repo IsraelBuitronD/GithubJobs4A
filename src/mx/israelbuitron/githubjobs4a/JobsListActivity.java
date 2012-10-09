@@ -76,29 +76,24 @@ public class JobsListActivity extends SherlockFragmentActivity implements OnItem
 
     public static class ViewHolder {
         public TextView jobTitle;
+        public TextView jobCompany;
+        public TextView jobLocation;
+        public TextView jobType;
     }
 
-    public class JobsListViewListener implements OnItemClickListener {
-        private final Context context;
+    @Override
+    public void onItemClick(AdapterView<?> parent,
+                            View view,
+                            int position,
+                            long id) {
+        // Get selected job
+        Job job = mJobsLoaded[position];
 
-        public JobsListViewListener(Context context) {
-            this.context = context;
-        }
+        // Send parameters to activity
+        Intent intent = new Intent(this, JobDetail.class);
+        intent.putExtra("job_id", job.getId());
 
-        @Override
-        public void onItemClick(AdapterView<?> parent,
-                                View view,
-                                int position,
-                                long id) {
-            // Get selected job
-            Job job = jobsLoaded[position];
-
-            // Send parameters to activity
-            Intent intent = new Intent(context, JobDetail.class);
-            intent.putExtra("job_id", job.getId());
-
-            startActivity(intent);
-        }
+        startActivity(intent);
     }
 
     protected class JobArrayAdapter extends ArrayAdapter<Job> {
@@ -123,11 +118,17 @@ public class JobsListActivity extends SherlockFragmentActivity implements OnItem
                         R.layout.activity_jobs_list_item, parent, false);
 
                 holder = new ViewHolder();
-                holder.jobTitle = (TextView) convertView
-                        .findViewById(R.id.jobTitle);
+                holder.jobTitle = (TextView)convertView
+                        .findViewById(R.id.job_title);
+                holder.jobCompany = (TextView)convertView
+                        .findViewById(R.id.job_company);
+                holder.jobLocation = (TextView)convertView
+                        .findViewById(R.id.job_location);
+                holder.jobType = (TextView)convertView
+                        .findViewById(R.id.job_type);
                 convertView.setTag(holder);
             } else {
-                holder = (ViewHolder) convertView.getTag();
+                holder = (ViewHolder)convertView.getTag();
             }
 
             // Fill layout
@@ -139,6 +140,9 @@ public class JobsListActivity extends SherlockFragmentActivity implements OnItem
                                 + position);
             } else {
                 holder.jobTitle.setText(job.getTitle());
+                holder.jobCompany.setText(job.getCompany());
+                holder.jobLocation.setText(job.getLocation());
+                holder.jobType.setText(job.getType());
             }
 
             return convertView;
