@@ -8,6 +8,8 @@ import mx.israelbuitron.githubjobs4a.R;
 import mx.israelbuitron.githubjobs4a.pojos.Job;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -36,6 +38,17 @@ public class HttpHelper {
 
         // Query HttpRequest
         HttpResponse response = client.execute(get);
+
+        // Check status codes for server errors
+        switch(response.getStatusLine().getStatusCode()) {
+        case HttpStatus.SC_INTERNAL_SERVER_ERROR: // 500
+        case HttpStatus.SC_NOT_IMPLEMENTED: // 501
+        case HttpStatus.SC_BAD_GATEWAY: // 502
+        case HttpStatus.SC_SERVICE_UNAVAILABLE: // 503
+        case HttpStatus.SC_GATEWAY_TIMEOUT: // 504
+            throw new NoHttpResponseException(response.getStatusLine()
+                    .getReasonPhrase());
+        }
 
         // Extract raw response from HttpResponse
         BufferedReader br = new BufferedReader(new InputStreamReader(response

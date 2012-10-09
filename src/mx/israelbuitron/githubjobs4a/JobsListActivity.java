@@ -1,10 +1,12 @@
 package mx.israelbuitron.githubjobs4a;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 
 import mx.israelbuitron.githubjobs4a.http.HttpHelper;
 import mx.israelbuitron.githubjobs4a.pojos.Job;
 
+import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.ClientProtocolException;
 
 import android.app.ProgressDialog;
@@ -21,6 +23,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockDialogFragment;
@@ -153,6 +156,7 @@ public class JobsListActivity extends SherlockFragmentActivity implements OnItem
 
         private final Context context;
         private ProgressDialog dialog;
+        private Throwable      exception;
 
         public LoadJobsList(Context context) {
             this.context = context;
@@ -173,10 +177,15 @@ public class JobsListActivity extends SherlockFragmentActivity implements OnItem
             try {
                 Job[] jobs = helper.getJobsList();
                 return jobs;
+            } catch(NoHttpResponseException e) {
+                Log.e(GitHubJobsApp.TAG, e.getMessage(), e);
+                exception = e;
             } catch (ClientProtocolException e) {
                 Log.e(GitHubJobsApp.TAG, e.getMessage(), e);
+                exception = e;
             } catch (IOException e) {
                 Log.e(GitHubJobsApp.TAG, e.getMessage(), e);
+                exception = e;
             }
 
             return null;
@@ -186,10 +195,26 @@ public class JobsListActivity extends SherlockFragmentActivity implements OnItem
         protected void onPostExecute(Job[] result) {
             super.onPostExecute(result);
 
-            // Update jobs list
-            mJobsLoaded = result;
-            mAdapter = new JobArrayAdapter(context, R.id.jobsList, mJobsLoaded);
-            mJobsListView.setAdapter(mAdapter);
+            if(result == null) {
+                if(exception == null) {
+                    // No error but no results too
+                    // TODO: Notify status
+                } else {
+                    // An error occurred
+                    if(exception instanceof NoHttpResponseException ||
+                            exception instanceof UnknownHostException) {
+                        // Notify server error
+                        Toast.makeText(
+                                context, R.string.no_server_response_message,
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            } else {
+                // Update jobs list
+                mJobsLoaded = result;
+                mAdapter = new JobArrayAdapter(context, R.id.jobsList, mJobsLoaded);
+                mJobsListView.setAdapter(mAdapter);
+            }
 
             // Hide dialog
             dialog.dismiss();
