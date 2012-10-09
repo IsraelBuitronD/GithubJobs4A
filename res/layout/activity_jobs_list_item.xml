@@ -5,7 +5,22 @@
     android:orientation="vertical" >
 
     <TextView 
-        android:id="@+id/jobTitle"
+        android:id="@+id/job_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/job_company"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/job_location"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/job_type"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
