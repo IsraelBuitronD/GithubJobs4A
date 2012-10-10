@@ -34,8 +34,30 @@
 
     <!-- About dialog -->
     <string name="about_dialog_fragment_tag">about_dialog</string>
-    <string name="about_dialog_title">About GithubJobs4A</string>
-    <string name="about_dialog_text">About GithubJobs4A</string>
-    <string name="about_dialog_accept_button_label">Ok</string>
+    <string name="about_dialog_title">Github Jobs for Android</string>
+    <string name="about_dialog_accept_button_label">Close</string>
+    <string name="version_msg">Version \% s</string>
+    <string name="description_project_msg">
+        GithubJobs4a is a simple Android client for Github Jobs.\n
+        This project is in development, so if you have ideas to make grow up or add improvements, we can include them.\n
+        We need contributors and ideas!
+    </string>
+    <string name="send_me_bugs_message">
+        If you find some error or you have suggestions, please send me an email.
+    </string>
+    <string name="homepage_message">
+        Homepage:\n
+        \thttp://github.com/neoriddle/GithubJobs4A
+    </string>
+    <string name="credits_message">
+        Credits:\n
+        Project Leader:\n
+        \tIsrael Buitron\n
+        \t\tEmail:\n
+        \t\t\tisrael.buitron@gmail.com\n
+        \t\t\tibuitron@computacion.cs.cinvestav.mx\n
+        \t\tGPG key:\n
+        \t\t\t0x798E944C
+    </string>
 
 </resources>
